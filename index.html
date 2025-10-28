@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayode Abdullahi - Software Engineer</title>
+    <meta name="description" content="Software Engineer portfolio showcasing projects, experience, and contact details with an interactive 3D hero.">
+    <meta property="og:title" content="Kayode Abdullahi - Software Engineer" />
+    <meta property="og:description" content="Portfolio of a Software Engineer with selected projects and experience." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.png" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+/* Modern splash screen styles */
+#splash {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    background-color: #000;
+    transition: opacity 0.5s ease-out;
+}
+
+.splash-content {
+    position: relative;
+    text-align: center;
+    padding: 2rem;
+    color: #fff;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards 0.2s;
+}
+
+.logo-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+}
+
+.logo-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(59, 130, 246, 0.5);
+    border-radius: 50%;
+    animation: pulseAndRotate 2s ease-in-out infinite;
+}
+
+.logo-circle:nth-child(2) {
+    animation-delay: -0.5s;
+    opacity: 0.7;
+}
+
+.logo-circle:nth-child(3) {
+    animation-delay: -1s;
+    opacity: 0.5;
+}
+
+.logo-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #60a5fa, #7c3aed);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+.loading-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin: 1.5rem auto 0;
+    overflow: hidden;
+}
+
+.loading-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #7c3aed);
+    width: 0%;
+    animation: loadProgress 2s ease-out forwards;
+}
+
+@keyframes pulseAndRotate {
+    0% {
+        transform: scale(1) rotate(0deg);
+        border-color: rgba(59, 130, 246, 0.5);
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        border-color: rgba(124, 58, 237, 0.5);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        border-color: rgba(59, 130, 246, 0.5);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes loadProgress {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 70%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#content {
+    text-align: center;
+    position: relative;
+}
+
+.card {
+    background-color: #dbca34;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    color: rgb(255, 0, 0);
+    width: 300px;
+    animation: cardAnimation 1.5s ease-out;
+}
+
+.card i {
+    margin-right: 5px;
+}
+
+.animated-emoji {
+    font-size: 2em;
+    margin-top: 10px;
+    animation: bounce 1s infinite;
+}
+
+.animated-title {
+    animation: fadeInDown 1.5s ease-out;
+}
+
+.animated-subtitle {
+    animation: fadeInUp 1.5s ease-out;
+}
+
+@keyframes curtainAnimation {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes cardAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-20px);
+    }
+
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    </style>
+</head>
+<body class="bg-black text-white font-inter">
+    <div id="splash">
+        <div class="splash-content">
+            <div class="logo-container">
+                <div class="logo-circle"></div>
+                <div class="logo-circle"></div>
+                <div class="logo-circle"></div>
+                <span class="logo-text">K</span>
+            </div>
+            <h1 class="text-xl font-bold tracking-wider mb-4">KIPITON</h1>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-semibold">KIPITON</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-blue-400 transition-colors">Home</a>
+                    <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+                    <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
+                    <a href="#experience" class="hover:text-blue-400 transition-colors">Experience</a>
+                    <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen overflow-hidden">
+        <div class="absolute inset-0">
+            <canvas id="canvas3d" class="w-full h-full"></canvas>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
+        <div class="relative z-10 flex items-center justify-start h-full">
+            <div class="text-left max-w-xl px-6 md:px-16">
+                <h1 class="text-5xl md:text-7xl font-bold animate-fade-in">Kayode <span class="text-2xl block">Moshood Abdullahi</span></h1>
+                <p class="text-lg md:text-2xl text-gray-300 mb-8 animate-fade-in-delay" id="rotating-title">Software Engineer</p>
+                <p class="text-lg text-gray-400 max-w-2xl animate-fade-in-delay-2">
+                    Crafting innovative solutions with cutting-edge technology
+                </p>
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <a href="#projects" class="btn-primary">View Projects</a>
+                    <a href="#contact" class="btn-ghost">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="space-y-6">
+                    <div class="prose prose-invert">
+                        <p class="text-lg text-gray-300">
+                            I'm a passionate Software Engineer with over a decade of experience in crafting digital solutions. My journey in technology started with a Computer Science degree and has evolved into a comprehensive understanding of the full software development lifecycle.
+                        </p>
+                        <p class="text-lg text-gray-300">
+                            I specialize in building scalable web applications and microservices, with a particular focus on performance optimization and user experience. Whether it's developing robust backend systems or creating intuitive frontend interfaces, I bring a holistic approach to every project.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-6">
+                        <div class="stat bg-gray-900/30 p-4 rounded-lg">
+                            <div class="stat-value">12+</div>
+                            <div class="stat-label">Years of Experience</div>
+                        </div>
+                        <div class="stat bg-gray-900/30 p-4 rounded-lg">
+                            <div class="stat-value">20+</div>
+                            <div class="stat-label">Projects Delivered</div>
+                        </div>
+                        <div class="stat bg-gray-900/30 p-4 rounded-lg">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Tech Stacks</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="glass-card p-8 rounded-xl">
+                        <h3 class="text-2xl font-semibold mb-6">Professional Highlights</h3>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-center gap-3">
+                                <span class="text-blue-400">🎓</span>
+                                <span>Computer Science Graduate with honors</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-green-400">💼</span>
+                                <span>Led multiple enterprise-level projects</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-purple-400">🧪</span>
+                                <span>Strong advocate for Test-Driven Development</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-yellow-400">🔄</span>
+                                <span>Expert in CI/CD and DevOps practices</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-red-400">🌟</span>
+                                <span>Open source contributor</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-blue-400">🌍</span>
+                                <span>Remote-first work approach</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn-primary w-full text-center py-3">Work with me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Technologies Section -->
+    <section class="py-24 px-6 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Frontend -->
+                <div class="glass-card p-8 rounded-xl">
+                    <h3 class="text-2xl font-semibold mb-6 text-blue-400">Frontend Development</h3>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-yellow-400">⚡</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-blue-400">⚛</span>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-blue-500">📘</span>
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-purple-400">🎨</span>
+                            <span>Tailwind CSS</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-green-400">🌿</span>
+                            <span>Vue.js</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-orange-400">🔥</span>
+                            <span>HTML5/CSS3</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-purple-500">🚀</span>
+                            <span>Next.js</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-blue-300">📱</span>
+                            <span>Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="glass-card p-8 rounded-xl">
+                    <h3 class="text-2xl font-semibold mb-6 text-green-400">Backend Development</h3>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-green-400">🟢</span>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-blue-400">🐍</span>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-orange-400">🔥</span>
+                            <span>Express.js</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-blue-500">📊</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-green-500">🍃</span>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-red-400">🔒</span>
+                            <span>Redis</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-purple-400">🚀</span>
+                            <span>GraphQL</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-yellow-400">🔑</span>
+                            <span>REST APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps & Tools -->
+                <div class="glass-card p-8 rounded-xl">
+                    <h3 class="text-2xl font-semibold mb-6 text-purple-400">DevOps & Tools</h3>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-blue-400">☁️</span>
+                            <span>AWS</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-orange-400">🔄</span>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-blue-500">🐳</span>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-purple-500">☸️</span>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-green-400">🔄</span>
+                            <span>CI/CD</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-blue-300">📊</span>
+                            <span>Monitoring</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-yellow-400">🔍</span>
+                            <span>Testing</span>
+                        </div>
+                        <div class="skill-item flex items-center space-x-2">
+                            <span class="text-red-400">🛡️</span>
+                            <span>Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card Template 1 -->
+                <article class="project-card">
+                    <div class="project-media" style="background-image: url(../projects/studyflares.png);"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Studyflares AI</h3>
+                        <p class="text-gray-400 mb-4">AI-powered study application that enhances learning with intelligent features.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Education</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://studyflares.com/" class="btn-primary">Live</a>
+                            <a href="#" class="btn-ghost">Code</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Project Card Template 2 -->
+                <article class="project-card">
+                    <div class="project-media" style="background-image: url(../projects/kessington.png);"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Kessington Restaurant</h3>
+                        <p class="text-gray-400 mb-4">Analytics, order management, and payments integration.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">E-commerce</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://kessingtonrestaurant.com/" class="btn-primary">Live</a>
+                            <a href="#" class="btn-ghost">Code</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Project Card Template 3 -->
+                <article class="project-card">
+                    <div class="project-media" style="background-image: url(../projects/easyrent.png);"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Easyrent Africa</h3>
+                        <p class="text-gray-400 mb-4">Modern Real Estate platform for Property Listings,  Tenants management and Commission earning.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag"></span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="btn-primary">Live</a>
+                            <a href="#" class="btn-ghost">Code</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Project Card Template 4 -->
+                <!-- <article class="project-card">
+                    <div class="project-media" style="background-image: radial-gradient(1200px 200px at 50% 50%, rgba(168,85,247,0.25), transparent), linear-gradient(135deg, #111827, #1f2937);"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">AI Image Tool</h3>
+                        <p class="text-gray-400 mb-4">Modern real estate platform for property listings, commission earning and tenants management</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Laravel </span>
+                            <span class="tech-tag">vite</span>
+                            <span class="tech-tag">Payment Integration</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="btn-primary">Live</a>
+                            <a href="#" class="btn-ghost">Code</a>
+                        </div>
+                    </div>
+                </article> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">Experience</h2>
+            <div class="space-y-12">
+                <!-- CTO Role -->
+                <div class="glass-card p-8 rounded-xl">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <h3 class="text-xl font-semibold">Chief Technology Officer</h3>
+                        <span class="text-blue-400">January 2025 - Present</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Walls and Gates</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Lead development of AI-powered educational platform <a href="https://studyflares.com" target="_blank" class="text-blue-400 hover:text-blue-300">Studyflares</a></span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Developed and launched <a href="https://kessingtonrestaurant.com" target="_blank" class="text-blue-400 hover:text-blue-300">Kessington Restaurant</a> platform</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Oversee server infrastructure and technical operations</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Lead technical instruction and mentorship programs</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Businessday Media -->
+                <div class="glass-card p-8 rounded-xl">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <h3 class="text-xl font-semibold">Web Developer</h3>
+                        <span class="text-blue-400">October 2021 - May 2022</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Businessday Media Ltd</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Led website maintenance and content management initiatives</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Developed event-specific landing pages and microsites</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Implemented new technology solutions to enhance operations</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Software Developer E&M -->
+                <div class="glass-card p-8 rounded-xl">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <h3 class="text-xl font-semibold">Software Developer</h3>
+                        <span class="text-blue-400">August 2019 - February 2020</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">E&M Business Solution</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Built and maintained enterprise web applications</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Implemented system monitoring and performance optimization</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Conducted comprehensive software testing and debugging</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Simplepay -->
+                <div class="glass-card p-8 rounded-xl">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <h3 class="text-xl font-semibold">Software Developer & Support Engineer</h3>
+                        <span class="text-blue-400">May 2017 - October 2017</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Simplepay</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Led development teams across 10+ client projects</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Developed plugins for multiple CMS platforms including Magento and WordPress</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-blue-400">▹</span>
+                            <span>Improved reporting performance by over 50% through technical support optimization</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Previous Roles -->
+                <div class="glass-card p-8 rounded-xl">
+                    <h4 class="text-lg font-semibold mb-6 text-gray-400">Previous Roles</h4>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                                <h3 class="text-md font-semibold">Software Developer</h3>
+                                <span class="text-blue-400">May 2013 - June 2014</span>
+                            </div>
+                            <p class="text-gray-400 mb-2">Union System Limited</p>
+                            <p class="text-gray-300">Implemented Mysis banking solutions and reduced major incidents by 23%</p>
+                        </div>
+
+                        <div>
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                                <h3 class="text-md font-semibold">IT Instructor</h3>
+                                <span class="text-blue-400">January 2013 - May 2013</span>
+                            </div>
+                            <p class="text-gray-400 mb-2">Software Technology Park Limited</p>
+                            <p class="text-gray-300">Developed and conducted technical training programs in operating systems and software applications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-gray-900/50">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="section-title text-center">Get In Touch</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <form action="https://formspree.io/f/your-id" method="POST" class="glass-card p-8 rounded-xl space-y-4">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Name</label>
+                        <input name="name" required class="input" placeholder="Your name" />
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Email</label>
+                        <input type="email" name="email" required class="input" placeholder="you@example.com" />
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-2">Message</label>
+                        <textarea name="message" rows="5" required class="input min-h-[120px]" placeholder="Tell me about your project"></textarea>
+                    </div>
+                    <button class="btn-primary w-full">Send Message</button>
+                    <p class="text-xs text-gray-500">Or email me directly at <a class="underline" href="mailto:moshoodkayodeabdul@gmail.com">moshoodkayodeabdul@gmail.com</a></p>
+                </form>
+                <div class="p-8 rounded-xl space-y-6">
+                    <p class="text-gray-300 text-lg">I'm open to freelance work, consulting, and full-time opportunities. Let's build something great.</p>
+                    <div class="flex gap-4">
+                        <a href="https://linkedin.com/in/yourprofile" class="contact-link"><span>LinkedIn</span></a>
+                        <a href="https://github.com/Kayode-Abdul" class="contact-link"><span>GitHub</span></a>
+                        <a href="mailto:moshoodkayodeabdul@gmail.com" class="contact-link"><span>Email</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 text-center text-gray-500 text-sm border-t border-gray-800 bg-black/60">
+        <div class="max-w-6xl mx-auto px-6">© <span id="year"></span> KIPITON<sup>&reg;</sup>. All rights reserved.</div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
