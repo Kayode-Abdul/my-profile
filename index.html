@@ -11,6 +11,7 @@
     <meta property="og:image" content="/og-image.png" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
 
@@ -592,7 +593,7 @@
                 <!-- CTO Role -->
                 <div class="glass-card p-8 rounded-xl">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <h3 class="text-xl font-semibold">Chief Technology Officer</h3>
+                        <h3 class="text-xl font-semibold">Senior Developer</h3>
                         <span class="text-blue-400">January 2025 - Present</span>
                     </div>
                     <p class="text-gray-400 mb-4">Walls and Gates</p>
@@ -718,28 +719,42 @@
         <div class="max-w-5xl mx-auto">
             <h2 class="section-title text-center">Get In Touch</h2>
             <div class="grid md:grid-cols-2 gap-10">
-                <form action="https://formspree.io/f/your-id" method="POST" class="glass-card p-8 rounded-xl space-y-4">
+                <form action="https://formspree.io/f/mldojzwk" method="POST" class="glass-card p-8 rounded-xl space-y-4">
                     <div>
                         <label class="block text-sm text-gray-400 mb-2">Name</label>
-                        <input name="name" required class="input" placeholder="Your name" />
+                        <input name="name" required class="input bg-gray-800/50 w-full px-4 py-2 rounded-lg border border-gray-700 focus:border-blue-500 focus:outline-none text-white" placeholder="Your name" />
                     </div>
                     <div>
                         <label class="block text-sm text-gray-400 mb-2">Email</label>
-                        <input type="email" name="email" required class="input" placeholder="you@example.com" />
+                        <input type="email" name="_replyto" required class="input bg-gray-800/50 w-full px-4 py-2 rounded-lg border border-gray-700 focus:border-blue-500 focus:outline-none text-white" placeholder="you@example.com" />
                     </div>
                     <div>
                         <label class="block text-sm text-gray-400 mb-2">Message</label>
-                        <textarea name="message" rows="5" required class="input min-h-[120px]" placeholder="Tell me about your project"></textarea>
+                        <textarea name="message" rows="5" required class="input bg-gray-800/50 w-full px-4 py-2 rounded-lg border border-gray-700 focus:border-blue-500 focus:outline-none text-white min-h-[120px]" placeholder="Tell me about your project"></textarea>
                     </div>
-                    <button class="btn-primary w-full">Send Message</button>
-                    <p class="text-xs text-gray-500">Or email me directly at <a class="underline" href="mailto:moshoodkayodeabdul@gmail.com">moshoodkayodeabdul@gmail.com</a></p>
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission" />
+                    <input type="text" name="_gotcha" style="display:none" />
+                    <button type="submit" class="btn-primary w-full flex items-center justify-center gap-2 hover:transform hover:scale-105 transition-transform">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Send Message</span>
+                    </button>
+                    <p class="text-xs text-gray-500">Or email me directly at <a class="underline hover:text-blue-400 transition-colors" href="mailto:moshoodkayodeabdul@gmail.com">moshoodkayodeabdul@gmail.com</a></p>
                 </form>
                 <div class="p-8 rounded-xl space-y-6">
                     <p class="text-gray-300 text-lg">I'm open to freelance work, consulting, and full-time opportunities. Let's build something great.</p>
-                    <div class="flex gap-4">
-                        <a href="https://linkedin.com/in/yourprofile" class="contact-link"><span>LinkedIn</span></a>
-                        <a href="https://github.com/Kayode-Abdul" class="contact-link"><span>GitHub</span></a>
-                        <a href="mailto:moshoodkayodeabdul@gmail.com" class="contact-link"><span>Email</span></a>
+                    <div class="flex gap-6 mt-8">
+                        <a href="https://www.linkedin.com/in/kayode-moshood-abdullahi-78207791/" class="text-gray-400 hover:text-blue-400 transform hover:scale-110 transition-all" title="LinkedIn">
+                            <i class="fab fa-linkedin text-3xl"></i>
+                        </a>
+                        <a href="https://github.com/Kayode-Abdul" class="text-gray-400 hover:text-purple-400 transform hover:scale-110 transition-all" title="GitHub">
+                            <i class="fab fa-github text-3xl"></i>
+                        </a>
+                        <a href="mailto:moshoodkayodeabdul@gmail.com" class="text-gray-400 hover:text-red-400 transform hover:scale-110 transition-all" title="Email">
+                            <i class="fas fa-envelope text-3xl"></i>
+                        </a>
+                        <a href="https://x.com/kayode_moshood3" class="text-gray-400 hover:text-blue-400 transform hover:scale-110 transition-all" title="Twitter">
+                            <i class="fab fa-twitter text-3xl"></i>
+                        </a>
                     </div>
                 </div>
             </div>
